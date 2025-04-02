@@ -345,17 +345,15 @@ Compute (invert bw_white).
 
 Definition nandb (b1:bool) (b2:bool) : bool
   (* REPLACE THIS LINE WITH ":= _your_definition_ ." *). Admitted.
-  if b1 then negb' b2
-  else true.
 
 Example test_nandb1:               (nandb true false) = true.
-Proof. simpl. reflexivity. Qed.
+(* FILL IN HERE *) Admitted.
 Example test_nandb2:               (nandb false false) = true.
-Proof. simpl. reflexivity. Qed.
+(* FILL IN HERE *) Admitted.
 Example test_nandb3:               (nandb false true) = true.
-Proof. simpl. reflexivity. Qed.
+(* FILL IN HERE *) Admitted.
 Example test_nandb4:               (nandb true true) = false.
-Proof. simpl. reflexivity. Qed.
+(* FILL IN HERE *) Admitted.
 (** [] *)
 
 (** **** Exercise: 1 star, standard (andb3)
@@ -366,21 +364,15 @@ Proof. simpl. reflexivity. Qed.
 
 Definition andb3 (b1:bool) (b2:bool) (b3:bool) : bool
   (* REPLACE THIS LINE WITH ":= _your_definition_ ." *). Admitted.
-  if b1 then if b2 then if b3 then true
 
-  else false
-
-  else false
-
-  else false.
 Example test_andb31:                 (andb3 true true true) = true.
-Proof. simpl. reflexivity. Qed.
+(* FILL IN HERE *) Admitted.
 Example test_andb32:                 (andb3 false true true) = false.
-Proof. simpl. reflexivity. Qed.
+(* FILL IN HERE *) Admitted.
 Example test_andb33:                 (andb3 true false true) = false.
-Proof. simpl. reflexivity. Qed.
+(* FILL IN HERE *) Admitted.
 Example test_andb34:                 (andb3 true true false) = false.
-Proof. simpl. reflexivity. Qed.
+(* FILL IN HERE *) Admitted.
 (** [] *)
 
 (* ================================================================= *)
@@ -822,21 +814,12 @@ Fixpoint exp (base power : nat) : nat :=
     you've forgotten the [:=]. *)
 
 Fixpoint factorial (n:nat) : nat
-  
-match n with
-
-| O => S O
-
-| S n' => mult n (factorial n')
-
-end. 
+  (* REPLACE THIS LINE WITH ":= _your_definition_ ." *). Admitted.
 
 Example test_factorial1:          (factorial 3) = 6.
-
-Proof. simpl. reflexivity. Qed.
+(* FILL IN HERE *) Admitted.
 Example test_factorial2:          (factorial 5) = (mult 10 12).
-
-Proof. simpl. reflexivity. Qed.
+(* FILL IN HERE *) Admitted.
 (** [] *)
 
 (** Again, we can make numerical expressions easier to read and write
@@ -930,24 +913,16 @@ Proof. simpl. reflexivity.  Qed.
     function, but you can use two if you want.) *)
 
 Definition ltb (n m : nat) : bool
-  
-if eqb n m then false
-
-else if leb n m then true
-
-else false.
+  (* REPLACE THIS LINE WITH ":= _your_definition_ ." *). Admitted.
 
 Notation "x <? y" := (ltb x y) (at level 70) : nat_scope.
 
 Example test_ltb1:             (ltb 2 2) = false.
-
-Proof. simpl. reflexivity.  Qed.
+(* FILL IN HERE *) Admitted.
 Example test_ltb2:             (ltb 2 4) = true.
-
-Proof. simpl. reflexivity.  Qed.
+(* FILL IN HERE *) Admitted.
 Example test_ltb3:             (ltb 4 2) = false.
-
-Proof. simpl. reflexivity.  Qed.
+(* FILL IN HERE *) Admitted.
 (** [] *)
 
 (* ################################################################# *)
@@ -1108,18 +1083,7 @@ Proof.
 Theorem plus_id_exercise : forall n m o : nat,
   n = m -> m = o -> n + m = m + o.
 Proof.
-
-  intros n m o.
-
-  intros H1.
-
-  intros H2.
-
-  rewrite -> H1.
-
-  rewrite -> H2.
-
-  reflexivity. Qed.
+  (* FILL IN HERE *) Admitted.
 (** [] *)
 
 (** The [Admitted] command tells Coq that we want to skip trying
@@ -1170,13 +1134,7 @@ Proof.
 Theorem mult_n_1 : forall p : nat,
   p * 1 = p.
 Proof.
-  intros p.
-
-  rewrite <- mult_n_Sm.
-
-  rewrite <- mult_n_O.
-
-  reflexivity. Qed.
+  (* FILL IN HERE *) Admitted.
 
 (** [] *)
 
@@ -1376,24 +1334,7 @@ Qed.
 Theorem andb_true_elim2 : forall b c : bool,
   andb b c = true -> c = true.
 Proof.
-
-  intros b c.
-
-  intros H.
-
-  destruct c eqn:E.
-
-  reflexivity.
-
-  rewrite <- H.
-
-  destruct b. 
-
-  reflexivity.
-
-  reflexivity.
-
-  Qed.
+  (* FILL IN HERE *) Admitted.
 (** [] *)
 
 (** Before closing the chapter, let's mention one final
@@ -1434,16 +1375,7 @@ Qed.
 Theorem zero_nbeq_plus_1 : forall n : nat,
   0 =? (n + 1) = false.
 Proof.
-
-  intros n.
-
-  destruct n as [|n'].
-
-  reflexivity.
-
-  reflexivity.
-
-  Qed.
+  (* FILL IN HERE *) Admitted.
 (** [] *)
 
 (* ================================================================= *)
@@ -1548,16 +1480,7 @@ Theorem identity_fn_applied_twice :
   (forall (x : bool), f x = x) ->
   forall (b : bool), f (f b) = b.
 Proof.
-
-  intros f x b.
-
-  rewrite x.
-
-  rewrite x.
-
-  reflexivity.
-
-  Qed.
+  (* FILL IN HERE *) Admitted.
 
 (** [] *)
 
@@ -1569,31 +1492,6 @@ Proof.
 
 (* FILL IN HERE *)
 
-Theorem negation_fn_applied_twice :
-
-  forall (f : bool -> bool),
-
-  (forall (x : bool), f x = negb x) ->
-
-  forall (b : bool), f (f b) = b.
-
-Proof.
-
-  (* FILL IN HERE Admitted. *)
-
-  intros f x b.
-
-  rewrite x.
-
-  rewrite x.
-
-  destruct b.
-
-  reflexivity.
-
-  reflexivity.
-
-  Qed.
 (* Do not modify the following line: *)
 Definition manual_grade_for_negation_fn_applied_twice : option (nat*string) := None.
 (** (The last definition is used by the autograder.)
@@ -1716,21 +1614,6 @@ Theorem letter_comparison_Eq :
   forall l, letter_comparison l l = Eq.
 Proof.
   (* FILL IN HERE *) Admitted.
-  intros l.
-
-  destruct l.
-
-  reflexivity.
-
-  reflexivity. 
-
-  reflexivity.
-
-  reflexivity.
-
-  reflexivity.
-
-  Qed.
 (** [] *)
 
 (** We can follow the same strategy to define the comparison operation
@@ -1763,19 +1646,7 @@ Definition modifier_comparison (m1 m2 : modifier) : comparison :=
 
 Definition grade_comparison (g1 g2 : grade) : comparison
   (* REPLACE THIS LINE WITH ":= _your_definition_ ." *). Admitted.
-  match g1, g2 with 
 
-  | (Grade g1_let g1_mod), (Grade g2_let g2_mod) => match (letter_comparison g1_let g2_let) with
-
-                                                    | Lt => Lt
-
-                                                    | Gt => Gt
-
-                                                    | Eq => modifier_comparison g1_mod g2_mod
-
-                                                    end
-
-                                            end.
 (** The following "unit tests" of your [grade_comparison] function
     should pass once you have defined it correctly. *)
 
@@ -1783,22 +1654,18 @@ Example test_grade_comparison1 :
   (grade_comparison (Grade A Minus) (Grade B Plus)) = Gt.
 (* FILL IN HERE *) Admitted.
 
-Proof. simpl. reflexivity. Qed.
 Example test_grade_comparison2 :
   (grade_comparison (Grade A Minus) (Grade A Plus)) = Lt.
 (* FILL IN HERE *) Admitted.
 
-Proof. simpl. reflexivity. Qed.
 Example test_grade_comparison3 :
   (grade_comparison (Grade F Plus) (Grade F Plus)) = Eq.
 (* FILL IN HERE *) Admitted.
 
-Proof. simpl. reflexivity. Qed.
 Example test_grade_comparison4 :
   (grade_comparison (Grade B Minus) (Grade C Plus)) = Gt.
 (* FILL IN HERE *) Admitted.
 
-Proof. simpl. reflexivity. Qed.
 (** [] *)
 
 (** Now that we have a definition of grades and how they compare to
@@ -1857,23 +1724,6 @@ Theorem lower_letter_lowers:
 Proof.
 (* FILL IN HERE *) Admitted.
 
-intros l.
-
-intros H.
-
-destruct l.
-
-- simpl. reflexivity.
-
-- simpl. reflexivity.
-
-- simpl. reflexivity.
-
-- simpl. reflexivity.
-
-- rewrite <-H; reflexivity.
-
-Qed.
 (** [] *)
 
 (** **** Exercise: 2 stars, standard (lower_grade)
@@ -1895,67 +1745,42 @@ Qed.
     Our solution is under 10 lines of code total. *)
 Definition lower_grade (g : grade) : grade
   (* REPLACE THIS LINE WITH ":= _your_definition_ ." *). Admitted.
-  match g with
 
-  | (Grade g_let g_mod) => match g_mod with 
-
-                          | Plus => Grade g_let Natural
-
-                          | Natural => Grade g_let Minus
-
-                          | Minus => match g_let with
-
-                                    | F => Grade F Minus
-
-                                    | _ => Grade (lower_letter g_let) Plus
-
-                                    end
-
-                              end
-
-                        end.
 Example lower_grade_A_Plus :
   lower_grade (Grade A Plus) = (Grade A Natural).
 Proof.
 (* FILL IN HERE *) Admitted.
 
-Proof. simpl. reflexivity. Qed.
 Example lower_grade_A_Natural :
   lower_grade (Grade A Natural) = (Grade A Minus).
 Proof.
 (* FILL IN HERE *) Admitted.
 
-Proof. simpl. reflexivity. Qed.
 Example lower_grade_A_Minus :
   lower_grade (Grade A Minus) = (Grade B Plus).
 Proof.
 (* FILL IN HERE *) Admitted.
 
-Proof. simpl. reflexivity. Qed.
 Example lower_grade_B_Plus :
   lower_grade (Grade B Plus) = (Grade B Natural).
 Proof.
 (* FILL IN HERE *) Admitted.
 
-Proof. simpl. reflexivity. Qed.
 Example lower_grade_F_Natural :
   lower_grade (Grade F Natural) = (Grade F Minus).
 Proof.
 (* FILL IN HERE *) Admitted.
 
-Proof. simpl. reflexivity. Qed.
 Example lower_grade_twice :
   lower_grade (lower_grade (Grade B Minus)) = (Grade C Natural).
 Proof.
 (* FILL IN HERE *) Admitted.
 
-Proof. simpl. reflexivity. Qed.
 Example lower_grade_thrice :
   lower_grade (lower_grade (lower_grade (Grade B Minus))) = (Grade C Minus).
 Proof.
 (* FILL IN HERE *) Admitted.
 
-Proof. simpl. reflexivity. Qed.
 (** Coq makes no distinction between an [Example] and a [Theorem]. We
     state the following as a [Theorem] only as a hint that we will use
     it in proofs below. *)
@@ -1963,7 +1788,6 @@ Theorem lower_grade_F_Minus : lower_grade (Grade F Minus) = (Grade F Minus).
 Proof.
 (* FILL IN HERE *) Admitted.
 
-Proof. simpl. reflexivity. Qed.
 (* GRADE_THEOREM 0.25: lower_grade_A_Plus *)
 (* GRADE_THEOREM 0.25: lower_grade_A_Natural *)
 (* GRADE_THEOREM 0.25: lower_grade_A_Minus *)
@@ -1994,28 +1818,6 @@ Theorem lower_grade_lowers :
     grade_comparison (lower_grade g) g = Lt.
 Proof.
   (* FILL IN HERE *) Admitted.
-  
-intros g.
-
-intros H.
-
-destruct g.
-
-destruct l.
-
-destruct m; reflexivity.
-
-destruct m; reflexivity.
-
-destruct m; reflexivity.
-
-destruct m; reflexivity.
-
-rewrite <- H.
-
-destruct m; reflexivity.
-
-Qed.
 
 (** [] *)
 
@@ -2072,17 +1874,7 @@ Theorem no_penalty_for_mostly_on_time :
     apply_late_policy late_days g = g.
 Proof.
   (* FILL IN HERE *) Admitted.
-  intros late g.
 
-  intros H.
-  
-  rewrite apply_late_policy_unfold.
-  
-  rewrite H.
-  
-  reflexivity.
-  
-  Qed.
 (** [] *)
 
 (** The following theorem states that, if a student has between 9 and
@@ -2097,17 +1889,6 @@ Theorem grade_lowered_once :
 Proof.
   (* FILL IN HERE *) Admitted.
 
-  intros late g H1 H2.
-
-  rewrite apply_late_policy_unfold.
-
-  rewrite H1.
-
-  rewrite H2.
-
-  reflexivity.
-
-  Qed.
 (** [] *)
 End LateDays.
 
@@ -2154,27 +1935,9 @@ Inductive bin : Type :=
 Fixpoint incr (m:bin) : bin
   (* REPLACE THIS LINE WITH ":= _your_definition_ ." *). Admitted.
 
-  match m with 
-
-  | Z => B1 Z  
-
-  | B0 m' => B1 m'
-
-  | B1 m' => B0 (incr m') 
-
-  end.
 Fixpoint bin_to_nat (m:bin) : nat
   (* REPLACE THIS LINE WITH ":= _your_definition_ ." *). Admitted.
 
-  match m with
-
-  | Z => 0
-
-  | B0 m' => 2 * (bin_to_nat m')
-
-  | B1 m' => 1 + 2 * (bin_to_nat m')
-
-  end.
 (** The following "unit tests" of your increment and binary-to-unary
     functions should pass after you have defined those functions correctly.
     Of course, unit tests don't fully demonstrate the correctness of
@@ -2182,30 +1945,24 @@ Fixpoint bin_to_nat (m:bin) : nat
     next chapter. *)
 
 Example test_bin_incr1 : (incr (B1 Z)) = B0 (B1 Z).
-
-Proof. simpl. reflexivity. Qed.
+(* FILL IN HERE *) Admitted.
 
 Example test_bin_incr2 : (incr (B0 (B1 Z))) = B1 (B1 Z).
-
-Proof. simpl. reflexivity. Qed.
+(* FILL IN HERE *) Admitted.
 
 Example test_bin_incr3 : (incr (B1 (B1 Z))) = B0 (B0 (B1 Z)).
-
-Proof. simpl. reflexivity. Qed.
+(* FILL IN HERE *) Admitted.
 
 Example test_bin_incr4 : bin_to_nat (B0 (B1 Z)) = 2.
-
-Proof. simpl. reflexivity. Qed.
+(* FILL IN HERE *) Admitted.
 
 Example test_bin_incr5 :
         bin_to_nat (incr (B1 Z)) = 1 + bin_to_nat (B1 Z).
-
-Proof. simpl. reflexivity. Qed.
+(* FILL IN HERE *) Admitted.
 
 Example test_bin_incr6 :
         bin_to_nat (incr (incr (B1 Z))) = 2 + bin_to_nat (B1 Z).
-
-Proof. simpl. reflexivity. Qed.
+(* FILL IN HERE *) Admitted.
 
 (** [] *)
 
