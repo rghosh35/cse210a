@@ -1,0 +1,21 @@
+[![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=18958979)
+#########################################################################
+                           SOFTWARE FOUNDATIONS
+#########################################################################
+
+This directory contains both Coq scripts (.v files) and generated HTML
+files for Volume 1 of the Software Foundations electronic textbook
+series.
+
+  - Preface.v or Preface.html
+    The place to start reading, including details on how to install
+    required software
+
+  - index.html
+    The book's cover page and navigation starting point
+
+  - deps.html
+    Overview of the ordering of chapters
+
+  - LICENSE
+    Explanation of how these files may be redistributed
