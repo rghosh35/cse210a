@@ -819,7 +819,7 @@ Fixpoint exp (base power : nat) : nat :=
     factorial was not found in the current environment," it means
     you've forgotten the [:=]. *)
 
-Fixpoint factorial (n:nat) : nat
+Fixpoint factorial (n:nat) : nat :=
   
 match n with
 
@@ -1610,8 +1610,6 @@ Theorem andb_eq_orb :
   (andb b c = orb b c) ->
   b = c.
 Proof.
-  (* FILL IN HERE *) Admitted.
-
 (** [] *)
 
 (* ================================================================= *)
@@ -1625,6 +1623,7 @@ Proof.
     features of Coq that we have seen so far and prove some simple
     facts about this grading policy.  *)
 
+Abort.
 Module LateDays.
 
 (** First, we inroduce a datatype for modeling the "letter" component
@@ -1713,7 +1712,6 @@ Compute letter_comparison B F.
 Theorem letter_comparison_Eq :
   forall l, letter_comparison l l = Eq.
 Proof.
-  (* FILL IN HERE *) Admitted.
   intros l.
 
   destruct l.
@@ -1759,7 +1757,7 @@ Definition modifier_comparison (m1 m2 : modifier) : comparison :=
     of a suitable call to [letter_comparison] to end up with just [3]
     possibilities. *)
 
-Definition grade_comparison (g1 g2 : grade) : comparison
+Definition grade_comparison (g1 g2 : grade) : comparison :=
    
   match g1, g2 with 
 
@@ -1779,22 +1777,22 @@ Definition grade_comparison (g1 g2 : grade) : comparison
 
 Example test_grade_comparison1 :
   (grade_comparison (Grade A Minus) (Grade B Plus)) = Gt.
-(* FILL IN HERE *) Admitted.
+
 
 Proof. simpl. reflexivity. Qed.
 Example test_grade_comparison2 :
   (grade_comparison (Grade A Minus) (Grade A Plus)) = Lt.
-(* FILL IN HERE *) Admitted.
+
 
 Proof. simpl. reflexivity. Qed.
 Example test_grade_comparison3 :
   (grade_comparison (Grade F Plus) (Grade F Plus)) = Eq.
-(* FILL IN HERE *) Admitted.
+
 
 Proof. simpl. reflexivity. Qed.
 Example test_grade_comparison4 :
   (grade_comparison (Grade B Minus) (Grade C Plus)) = Gt.
-(* FILL IN HERE *) Admitted.
+
 
 Proof. simpl. reflexivity. Qed.
 (** [] *)
@@ -1853,7 +1851,7 @@ Theorem lower_letter_lowers:
     letter_comparison F l = Lt ->
     letter_comparison (lower_letter l) l = Lt.
 Proof.
-(* FILL IN HERE *) Admitted.
+
 
 intros l.
 
@@ -1891,7 +1889,7 @@ Qed.
     cases.
 
     Our solution is under 10 lines of code total. *)
-Definition lower_grade (g : grade) : grade
+Definition lower_grade (g : grade) : grade :=
    
   match g with
 
@@ -1915,43 +1913,43 @@ Definition lower_grade (g : grade) : grade
 Example lower_grade_A_Plus :
   lower_grade (Grade A Plus) = (Grade A Natural).
 Proof.
-(* FILL IN HERE *) Admitted.
+
 
 Proof. simpl. reflexivity. Qed.
 Example lower_grade_A_Natural :
   lower_grade (Grade A Natural) = (Grade A Minus).
 Proof.
-(* FILL IN HERE *) Admitted.
+
 
 Proof. simpl. reflexivity. Qed.
 Example lower_grade_A_Minus :
   lower_grade (Grade A Minus) = (Grade B Plus).
 Proof.
-(* FILL IN HERE *) Admitted.
+
 
 Proof. simpl. reflexivity. Qed.
 Example lower_grade_B_Plus :
   lower_grade (Grade B Plus) = (Grade B Natural).
 Proof.
-(* FILL IN HERE *) Admitted.
+
 
 Proof. simpl. reflexivity. Qed.
 Example lower_grade_F_Natural :
   lower_grade (Grade F Natural) = (Grade F Minus).
 Proof.
-(* FILL IN HERE *) Admitted.
+
 
 Proof. simpl. reflexivity. Qed.
 Example lower_grade_twice :
   lower_grade (lower_grade (Grade B Minus)) = (Grade C Natural).
 Proof.
-(* FILL IN HERE *) Admitted.
+
 
 Proof. simpl. reflexivity. Qed.
 Example lower_grade_thrice :
   lower_grade (lower_grade (lower_grade (Grade B Minus))) = (Grade C Minus).
 Proof.
-(* FILL IN HERE *) Admitted.
+
 
 Proof. simpl. reflexivity. Qed.
 (** Coq makes no distinction between an [Example] and a [Theorem]. We
@@ -1959,7 +1957,7 @@ Proof. simpl. reflexivity. Qed.
     it in proofs below. *)
 Theorem lower_grade_F_Minus : lower_grade (Grade F Minus) = (Grade F Minus).
 Proof.
-(* FILL IN HERE *) Admitted.
+
 
 Proof. simpl. reflexivity. Qed.
 (* GRADE_THEOREM 0.25: lower_grade_A_Plus *)
@@ -1991,7 +1989,7 @@ Theorem lower_grade_lowers :
     grade_comparison (Grade F Minus) g = Lt ->
     grade_comparison (lower_grade g) g = Lt.
 Proof.
-  (* FILL IN HERE *) Admitted.
+  
   
 intros g.
 
@@ -2069,7 +2067,7 @@ Theorem no_penalty_for_mostly_on_time :
     (late_days <? 9 = true) ->
     apply_late_policy late_days g = g.
 Proof.
-  (* FILL IN HERE *) Admitted.
+  
   intros late g.
 
   intros H.
@@ -2093,7 +2091,7 @@ Theorem grade_lowered_once :
     (late_days <? 17 = true) ->
     (apply_late_policy late_days g) = (lower_grade g).
 Proof.
-  (* FILL IN HERE *) Admitted.
+  
 
   intros late g H1 H2.
 
@@ -2149,7 +2147,7 @@ Inductive bin : Type :=
     for binary numbers, and a function [bin_to_nat] to convert
     binary numbers to unary numbers. *)
 
-Fixpoint incr (m:bin) : bin
+Fixpoint incr (m:bin) : bin :=
    
 
   match m with 
@@ -2161,7 +2159,7 @@ Fixpoint incr (m:bin) : bin
   | B1 m' => B0 (incr m') 
 
   end.
-Fixpoint bin_to_nat (m:bin) : nat
+Fixpoint bin_to_nat (m:bin) : nat :=
    
 
   match m with
