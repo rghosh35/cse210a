@@ -343,7 +343,7 @@ Compute (invert bw_white).
     skip over [simpl] and go directly to [reflexivity]. We'll
     explain this phenomenon later in the chapter. *)
 
-Definition nandb (b1:bool) (b2:bool) : bool
+Definition nandb (b1:bool) (b2:bool) : bool :=
   if b1 then negb' b2
   else true.
 
@@ -363,7 +363,7 @@ Proof. simpl. reflexivity. Qed.
     return [true] when all of its inputs are [true], and [false]
     otherwise. *)
 
-Definition andb3 (b1:bool) (b2:bool) (b3:bool) : bool
+Definition andb3 (b1:bool) (b2:bool) (b3:bool) : bool :=
   if b1 then if b2 then if b3 then true
 
   else false
@@ -927,7 +927,7 @@ Proof. simpl. reflexivity.  Qed.
     function.  (It can be done with just one previously defined
     function, but you can use two if you want.) *)
 
-Definition ltb (n m : nat) : bool
+Definition ltb (n m : nat) : bool :=
   
 if eqb n m then false
 
