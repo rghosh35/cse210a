@@ -344,7 +344,6 @@ Compute (invert bw_white).
     explain this phenomenon later in the chapter. *)
 
 Definition nandb (b1:bool) (b2:bool) : bool
-  (* REPLACE THIS LINE WITH ":= _your_definition_ ." *). Admitted.
   if b1 then negb' b2
   else true.
 
@@ -365,7 +364,6 @@ Proof. simpl. reflexivity. Qed.
     otherwise. *)
 
 Definition andb3 (b1:bool) (b2:bool) (b3:bool) : bool
-  (* REPLACE THIS LINE WITH ":= _your_definition_ ." *). Admitted.
   if b1 then if b2 then if b3 then true
 
   else false
@@ -1762,7 +1760,7 @@ Definition modifier_comparison (m1 m2 : modifier) : comparison :=
     possibilities. *)
 
 Definition grade_comparison (g1 g2 : grade) : comparison
-  (* REPLACE THIS LINE WITH ":= _your_definition_ ." *). Admitted.
+   
   match g1, g2 with 
 
   | (Grade g1_let g1_mod), (Grade g2_let g2_mod) => match (letter_comparison g1_let g2_let) with
@@ -1894,7 +1892,7 @@ Qed.
 
     Our solution is under 10 lines of code total. *)
 Definition lower_grade (g : grade) : grade
-  (* REPLACE THIS LINE WITH ":= _your_definition_ ." *). Admitted.
+   
   match g with
 
   | (Grade g_let g_mod) => match g_mod with 
@@ -2152,7 +2150,7 @@ Inductive bin : Type :=
     binary numbers to unary numbers. *)
 
 Fixpoint incr (m:bin) : bin
-  (* REPLACE THIS LINE WITH ":= _your_definition_ ." *). Admitted.
+   
 
   match m with 
 
@@ -2164,7 +2162,7 @@ Fixpoint incr (m:bin) : bin
 
   end.
 Fixpoint bin_to_nat (m:bin) : nat
-  (* REPLACE THIS LINE WITH ":= _your_definition_ ." *). Admitted.
+   
 
   match m with
 
