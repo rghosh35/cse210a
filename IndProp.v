@@ -695,7 +695,13 @@ Theorem le_inversion : forall (n m : nat),
   le n m ->
   (n = m) \/ (exists m', m = S m' /\ le n m').
 Proof.
-  (* FILL IN HERE *) Admitted.
+  intros n m H.
+  destruct H as [| m' H'].
+  - left. reflexivity.
+  - right. exists m'. split.
+    + reflexivity.
+    + apply H'.
+Qed.
 (** [] *)
 
 (** We can use the inversion lemma that we proved above to help
@@ -756,7 +762,11 @@ Proof. intros H. inversion H. Qed.
 Theorem SSSSev__even : forall n,
   ev (S (S (S (S n)))) -> ev n.
 Proof.
-  (* FILL IN HERE *) Admitted.
+  intros n H.
+  inversion H.
+  inversion H1.
+  apply H3.
+  Qed.
 (** [] *)
 
 (** **** Exercise: 1 star, standard (ev5_nonsense)
@@ -766,7 +776,11 @@ Proof.
 Theorem ev5_nonsense :
   ev 5 -> 2 + 2 = 9.
 Proof.
-  (* FILL IN HERE *) Admitted.
+  intros H.
+  inversion H.
+  inversion H1.
+  inversion H3.
+  Qed.
 (** [] *)
 
 (** The [inversion] tactic does quite a bit of work. For
@@ -940,7 +954,13 @@ Theorem ev_ev__ev : forall n m,
   (* Hint: There are two pieces of evidence you could attempt to induct upon
       here. If one doesn't work, try the other. *)
 Proof.
-  (* FILL IN HERE *) Admitted.
+  intros n m NM N.
+  induction N as [|n' N'].
+  - apply NM.
+  - apply IHN'.
+    simpl in NM. inversion NM.
+    apply H0.
+  Qed.
 (** [] *)
 
 (** **** Exercise: 3 stars, standard, optional (ev_plus_plus)
@@ -1008,7 +1028,12 @@ Qed.
 Lemma Perm3_In : forall (X : Type) (x : X) (l1 l2 : list X),
     Perm3 l1 l2 -> In x l1 -> In x l2.
 Proof.
-  (* FILL IN HERE *) Admitted.
+  intros X x l1 l2 Hperm.
+  induction Hperm as [a b c | a b c | l1 l2 l3 H12 IH12 H23 IH23].
+  - (* perm3_swap12 *) simpl. intros [H | [H | [ ]]]; subst; auto.
+  - (* perm3_swap23 *) simpl. intros [H | [H | [ ]]]; subst; auto.
+  - (* perm3_trans *) intros Hin. apply IH23. apply IH12. assumption.
+Qed.
 (** [] *)
 
 (** **** Exercise: 1 star, standard, optional (Perm3_NotIn) *)
