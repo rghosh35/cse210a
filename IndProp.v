@@ -1236,15 +1236,23 @@ Theorem plus_le_compat_l : forall n m p,
   n <= m ->
   p + n <= p + m.
 Proof.
-  intros n m p H.
-  induction p as [| p' IHp].
-  - simpl. apply H.
-  - simpl. apply le_n_S. apply IHp.
+  intros n m p Hnm.
+  induction p as [| p_val IHp].
+  - rewrite plus_O_n. rewrite plus_O_n.
+    
+    exact Hnm.
+  - simpl. 
+    apply n_le_m__Sn_le_Sm.
+    exact IHp.
 Qed.
 Theorem plus_le_compat_r : forall n m p,
   n <= m -> n + p <= m + p.
 Proof.
-  (* FILL IN HERE *) Admitted.
+  intros n m p Hnm.
+  rewrite add_comm. rewrite (add_comm m p).
+  apply plus_le_compat_l.
+  exact Hnm.
+Qed.
 
 Theorem le_plus_trans : forall n m p,
   n <= m -> n <= m + p.
