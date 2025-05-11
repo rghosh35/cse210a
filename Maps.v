@@ -244,7 +244,22 @@ Proof.
 Theorem t_update_same : forall (A : Type) (m : total_map A) x,
   (x !-> m x ; m) = m.
 Proof.
-  (* FILL IN HERE *) Admitted.
+
+intros A m x.
+
+apply functional_extensionality.
+
+intros x0.
+
+unfold t_update.
+
+destruct (eqb_spec x x0) as [H | H1]. 
+
+-rewrite H. reflexivity.
+
+- reflexivity.
+
+Qed.
 (** [] *)
 
 (** **** Exercise: 3 stars, standard, especially useful (t_update_permute)
@@ -260,7 +275,30 @@ Theorem t_update_permute : forall (A : Type) (m : total_map A)
   =
   (x2 !-> v2 ; x1 !-> v1 ; m).
 Proof.
-  (* FILL IN HERE *) Admitted.
+
+intros A m v1 v2 x1 x2 H.
+
+apply functional_extensionality.
+
+intros x0.
+
+unfold t_update.
+
+destruct (eqb_spec x1 x0) as [H1 | _].
+
+- destruct (eqb_spec x2 x0) as [H2 | _].
+
+  + exfalso. apply H. rewrite H1. rewrite H2. reflexivity.
+
+  + reflexivity.
+
+- destruct (eqb_spec x2 x0) as [H2 | _].
+
+  + reflexivity.
+
+  + reflexivity.
+
+Qed.
 (** [] *)
 
 (* ################################################################# *)
