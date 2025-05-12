@@ -882,11 +882,52 @@ Inductive bevalR: bexp -> bool -> Prop :=
   | e_bAnd (e1 e2 : bexp) (b1 b2 : bool) (H1 : bevalR e1 b1) (H2 : bevalR e2 b2) : BAnd e1 e2 ==>b andb b1 b2
 where "e '==>b' b" := (bevalR e b) : type_scope
 .
-
+Lemma aeval_iff_aevalR : forall a n, a ==> n <-> aeval a = n.
+Proof.
+  split.
+  - intros H. induction H; simpl; try rewrite IHaevalR1; try rewrite IHaevalR2; reflexivity.
+  - generalize dependent n. induction a; simpl; intros; subst; try constructor; try apply IHa1; try apply IHa2; try reflexivity.
+Qed.
 Lemma bevalR_iff_beval : forall b bv,
   b ==>b bv <-> beval b = bv.
 Proof.
-    (* FILL IN HERE *) Admitted.
+  intros b bv. split.
+  - (* -> *)
+    intros H. induction H; simpl.
+    + reflexivity.
+    + reflexivity.
+    + (* e_bEq *)
+      apply aeval_iff_aevalR in H1. apply aeval_iff_aevalR in H2. subst.
+      reflexivity.
+    + (* e_bNeq *)
+      apply aeval_iff_aevalR in H1. apply aeval_iff_aevalR in H2. subst.
+      reflexivity.
+    + (* e_bLe *)
+      apply aeval_iff_aevalR in H1. apply aeval_iff_aevalR in H2. subst.
+      reflexivity.
+    + (* e_bGt *)
+      apply aeval_iff_aevalR in H1. apply aeval_iff_aevalR in H2. subst.
+      reflexivity.
+    + (* e_bNot *)
+      rewrite IHbevalR. reflexivity.
+    + (* e_bAnd *)
+      rewrite IHbevalR1, IHbevalR2. reflexivity.
+  - (* <- *)
+    generalize dependent bv.
+    induction b; intros bv H; simpl in H; subst.
+    + constructor.
+    + constructor.
+    + apply e_bEq; apply aeval_iff_aevalR; reflexivity.
+    + apply e_bNeq; apply aeval_iff_aevalR; reflexivity.
+    + apply e_bLe; apply aeval_iff_aevalR; reflexivity.
+    + apply e_bGt; apply aeval_iff_aevalR; reflexivity.
+    + apply e_bNot. apply IHb. reflexivity.
+    + apply e_bAnd.
+      * apply IHb1. reflexivity.
+      * apply IHb2. reflexivity.
+Qed.
+
+
 
 End AExp.
 (* ================================================================= *)
